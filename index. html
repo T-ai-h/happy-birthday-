@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>สุขสันต์วันเกิด 🎀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&family=Athiti:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#FF9BC0;
+    --deep-pink:#FF6FA5;
+    --lav:#C9B6FF;
+    --mint:#A8EBD4;
+    --gold:#FFCB77;
+    --ink:#5C4468;
+    --cream:#FFF9F3;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Athiti',sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    position:relative;
+    background:linear-gradient(-45deg,#FFE1EC,#F3E4FF,#E1F7F0,#FFF3DE);
+    background-size:400% 400%;
+    animation:auroraShift 16s ease infinite;
+  }
+  @keyframes auroraShift{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+
+  /* ---------- sparkles ---------- */
+  .sparkle{
+    position:fixed;
+    font-size:14px;
+    opacity:0;
+    z-index:1;
+    animation:twinkle 3s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:0; transform:scale(0.4) rotate(0deg);}
+    50%{opacity:0.9; transform:scale(1.1) rotate(15deg);}
+  }
+
+  /* ---------- floating hearts/balloons ---------- */
+  .float-item{
+    position:fixed;
+    bottom:-80px;
+    font-size:26px;
+    opacity:0.9;
+    animation:rise linear infinite;
+    z-index:1;
+    pointer-events:none;
+    filter:drop-shadow(0 4px 6px rgba(0,0,0,0.08));
+  }
+  @keyframes rise{
+    0%{transform:translateY(0) translateX(0) rotate(-6deg);}
+    50%{transform:translateY(-55vh) translateX(25px) rotate(6deg);}
+    100%{transform:translateY(-115vh) translateX(-20px) rotate(-6deg);}
+  }
+
+  /* ---------- confetti ---------- */
+  .confetti{
+    position:fixed;
+    top:-20px;
+    font-size:16px;
+    opacity:0;
+    z-index:6;
+    pointer-events:none;
+  }
+  .confetti.fall{ animation:fall 2.8s ease-in forwards; }
+  @keyframes fall{
+    0%{opacity:1; transform:translateY(0) rotate(0deg) scale(1);}
+    100%{opacity:1; transform:translateY(105vh) rotate(480deg) scale(0.8);}
+  }
+
+  /* ---------- card ---------- */
+  .stage{
+    position:relative;
+    z-index:3;
+    width:min(90vw,460px);
+    background:rgba(255,255,255,0.88);
+    backdrop-filter:blur(6px);
+    border-radius:42px 42px 46px 46px/48px 48px 40px 40px;
+    padding:44px 32px 36px;
+    text-align:center;
+    box-shadow:0 40px 70px -25px rgba(180,130,220,0.5), 0 0 0 3px #fff, 0 0 0 9px rgba(255,155,192,0.55);
+    animation:pop-in 0.75s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes pop-in{
+    0%{transform:scale(0.35) rotate(-8deg); opacity:0;}
+    100%{transform:scale(1) rotate(0deg); opacity:1;}
+  }
+
+  .crown{
+    font-size:34px;
+    animation:sway 2.4s ease-in-out infinite;
+    display:inline-block;
+  }
+  @keyframes sway{
+    0%,100%{transform:rotate(-8deg);}
+    50%{transform:rotate(8deg);}
+  }
+
+  .eyebrow{
+    font-family:'Mali',cursive;
+    font-weight:600;
+    color:var(--deep-pink);
+    letter-spacing:1.5px;
+    font-size:14px;
+    margin-top:4px;
+  }
+
+  h1{
+    font-family:'Mali',cursive;
+    font-weight:700;
+    font-size:clamp(30px,7.5vw,40px);
+    margin:6px 0 0;
+    line-height:1.2;
+    background:linear-gradient(90deg,var(--deep-pink),var(--lav) 55%,var(--gold));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  .subname{
+    font-family:'Mali',cursive;
+    font-weight:700;
+    font-size:22px;
+    color:var(--ink);
+    margin:8px 0 4px;
+    position:relative;
+    display:inline-block;
+  }
+  .subname::before,.subname::after{
+    content:'♡';
+    color:var(--pink);
+    font-size:15px;
+    margin:0 8px;
+    vertical-align:middle;
+  }
+
+  /* ---------- cake ---------- */
+  .cake-wrap{
+    margin:18px auto 8px;
+    width:160px;
+    cursor:pointer;
+    user-select:none;
+  }
+  .flame{
+    width:11px;
+    height:17px;
+    background:radial-gradient(ellipse at bottom, #FFE49B 0%, #FFCB77 55%, #FF9BC0 100%);
+    border-radius:50% 50% 50% 50%/65% 65% 35% 35%;
+    margin:0 auto;
+    animation:flicker 0.55s ease-in-out infinite alternate;
+    transition:opacity 0.3s, transform 0.3s;
+    box-shadow:0 0 12px 2px rgba(255,203,119,0.7);
+  }
+  @keyframes flicker{
+    from{transform:scale(1) rotate(-3deg);}
+    to{transform:scale(1.18) rotate(3deg);}
+  }
+  .candle{
+    width:7px;
+    height:28px;
+    background:repeating-linear-gradient(180deg, var(--lav) 0 6px, #fff 6px 10px);
+    margin:0 auto;
+    border-radius:3px;
+  }
+  .tiers{display:flex; flex-direction:column; align-items:center;}
+  .tier1{
+    width:76px; height:36px;
+    background:linear-gradient(180deg,#FFB6D5,var(--pink));
+    border-radius:10px 10px 4px 4px;
+    position:relative;
+    box-shadow:inset 0 -4px 6px rgba(0,0,0,0.06);
+  }
+  .tier2{
+    width:118px; height:44px;
+    background:linear-gradient(180deg,#D9C6FF,var(--lav));
+    border-radius:12px 12px 4px 4px;
+    margin-top:-2px;
+    position:relative;
+    box-shadow:inset 0 -4px 6px rgba(0,0,0,0.06);
+  }
+  .sprinkles{position:absolute; inset:0; overflow:hidden; border-radius:inherit;}
+  .sprinkles span{
+    position:absolute;
+    width:5px; height:5px;
+    border-radius:50%;
+    top:var(--t); left:var(--l);
+    background:var(--c);
+  }
+  .drip{position:absolute; bottom:-7px; width:100%; height:16px; background:repeating-radial-gradient(circle at 11px 0, #fff 0 6px, transparent 7px 22px); opacity:0.95;}
+  .plate{
+    width:140px; height:12px;
+    background:linear-gradient(90deg,var(--gold),#FFE0A3);
+    border-radius:50%;
+    margin-top:2px;
+    box-shadow:0 6px 14px -4px rgba(255,203,119,0.7);
+  }
+
+  .hint{
+    font-family:'Mali',cursive;
+    font-size:14px;
+    color:#B39CC7;
+    margin-top:16px;
+    font-weight:600;
+    transition:opacity 0.4s;
+  }
+
+  .message{
+    font-family:'Athiti',sans-serif;
+    font-weight:400;
+    font-size:16px;
+    color:var(--ink);
+    line-height:1.75;
+    background:linear-gradient(135deg,#FFF0F6,#F6EEFF);
+    border:1.5px dashed #FFC2DC;
+    border-radius:22px;
+    padding:18px 20px;
+    margin-top:16px;
+    opacity:0;
+    max-height:0;
+    overflow:hidden;
+    transition:opacity 0.6s ease, max-height 0.6s ease, margin 0.6s ease;
+  }
+  .message.show{
+    opacity:1;
+    max-height:320px;
+    margin-top:20px;
+  }
+
+  .signoff{
+    font-family:'Mali',cursive;
+    font-weight:700;
+    color:var(--deep-pink);
+    margin-top:12px;
+    font-size:16px;
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="crown">🎀</div>
+  <div class="eyebrow">HAPPY BIRTHDAY</div>
+  <h1>สุขสันต์วันเกิด</h1>
+  <div class="subname">แฟนสุดที่รัก</div>
+
+  <div class="cake-wrap" id="cakeWrap">
+    <div class="candle"></div>
+    <div class="flame" id="flame"></div>
+    <div class="tiers">
+      <div class="tier1">
+        <div class="sprinkles">
+          <span style="--t:20%;--l:15%;--c:#FFCB77"></span>
+          <span style="--t:55%;--l:60%;--c:#C9B6FF"></span>
+          <span style="--t:30%;--l:80%;--c:#A8EBD4"></span>
+        </div>
+        <div class="drip"></div>
+      </div>
+      <div class="tier2">
+        <div class="sprinkles">
+          <span style="--t:25%;--l:10%;--c:#FF9BC0"></span>
+          <span style="--t:60%;--l:35%;--c:#FFCB77"></span>
+          <span style="--t:30%;--l:65%;--c:#A8EBD4"></span>
+          <span style="--t:55%;--l:85%;--c:#C9B6FF"></span>
+        </div>
+        <div class="drip"></div>
+      </div>
+    </div>
+    <div class="plate"></div>
+  </div>
+
+  <div class="hint" id="hint">👆 แตะที่เทียน เพื่ออธิษฐานและเป่าเทียน</div>
+
+  <div class="message" id="msg">
+    สุขสันต์วันเกิดนะที่รัก 🎉<br>
+    ขอบคุณที่อยู่เคียงข้างกันมาตลอด ขอให้ปีนี้เป็นปีที่มีแต่รอยยิ้ม สุขภาพแข็งแรง และเจอแต่เรื่องดีๆ เข้ามาในชีวิต<br><br>
+    ไม่ว่าจะสุขหรือทุกข์ เราจะอยู่ด้วยกันเสมอนะ รักที่สุดเลย 💜
+    <div class="signoff">— ด้วยรักเสมอ 🎈</div>
+  </div>
+</div>
+
+<script>
+const floatEmojis=['🎈','💗','✨','🎀','💫'];
+const sparkleEmojis=['✨','⭐','💫'];
+
+function spawnFloat(){
+  const b=document.createElement('div');
+  b.className='float-item';
+  b.textContent=floatEmojis[Math.floor(Math.random()*floatEmojis.length)];
+  b.style.left=Math.random()*100+'vw';
+  b.style.fontSize=(20+Math.random()*16)+'px';
+  b.style.animationDuration=(9+Math.random()*6)+'s';
+  document.body.appendChild(b);
+  setTimeout(()=>b.remove(),16000);
+}
+for(let i=0;i<7;i++) setTimeout(spawnFloat, i*800);
+setInterval(spawnFloat, 2200);
+
+function spawnSparkle(){
+  const s=document.createElement('div');
+  s.className='sparkle';
+  s.textContent=sparkleEmojis[Math.floor(Math.random()*sparkleEmojis.length)];
+  s.style.left=Math.random()*100+'vw';
+  s.style.top=Math.random()*100+'vh';
+  s.style.animationDuration=(2+Math.random()*2)+'s';
+  s.style.animationDelay=(Math.random()*2)+'s';
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),6000);
+}
+for(let i=0;i<18;i++) spawnSparkle();
+setInterval(spawnSparkle, 900);
+
+function confettiBurst(){
+  const bits=['🎉','✨','💗','🎀','⭐','💜'];
+  for(let i=0;i<50;i++){
+    const c=document.createElement('div');
+    c.className='confetti fall';
+    c.textContent=bits[Math.floor(Math.random()*bits.length)];
+    c.style.left=Math.random()*100+'vw';
+    c.style.fontSize=(12+Math.random()*10)+'px';
+    c.style.animationDelay=(Math.random()*0.4)+'s';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),3400);
+  }
+}
+
+let blown=false;
+document.getElementById('cakeWrap').addEventListener('click',()=>{
+  if(blown) return;
+  blown=true;
+  document.getElementById('flame').style.opacity='0';
+  document.getElementById('flame').style.transform='scale(0.2)';
+  document.getElementById('hint').style.opacity='0';
+  document.getElementById('hint').textContent='🌟 ขอให้สมหวังทุกอย่างเลยนะ';
+  setTimeout(()=>{document.getElementById('hint').style.opacity='1';},50);
+  document.getElementById('msg').classList.add('show');
+  confettiBurst();
+});
+</script>
+
+</body>
+</html>
